@@ -1,5 +1,10 @@
 from tkinter import *
 from tkinter import messagebox as mb
+from tkinter import ttk
+import tkinter as tk
+from tkcalendar import Calendar, DateEntry
+
+
 import requests
 from bs4 import BeautifulSoup
 import time
@@ -81,6 +86,22 @@ def main():
 
 
 
+    def choose_date():
+        top = tk.Toplevel(root)
+        top.geometry('200x150')
+
+        ttk.Label(top, text='Choose date').pack(padx=10, pady=10)
+
+        def exit_btn():
+            top.destroy()
+        cal = DateEntry(top, width=12, background='darkblue',
+                        foreground='white', borderwidth=2)
+        cal.pack(padx=10, pady=10)
+        but1 = Button(top, text="Выбрать", command=exit_btn).pack()
+
+
+
+
     def gor1():
         znak = ent2.get()
         if znak == 'Овен' or znak == 'овен':
@@ -119,11 +140,14 @@ def main():
     root.geometry('350x250')
     root.title('Project by R1T1CK')
 
-    lbl1 = Label(root,text='Введите дашу вашего рождения ДД.ММ.ГГГГ', font=24)
-    lbl1.place(x = 5, y = 30)
 
-    ent1 = Entry(root, width=30)
-    ent1.place(x = 80, y = 70)
+
+    lbl1 = Label(root,text='Выберите дашу вашего рождения', font=24)
+    lbl1.place(x = 50, y = 30)
+
+    btn1 = Button(root, text="Выбрать дату", command=choose_date, width=30)
+    btn1.place(x=60, y=70)
+
 
     lbl1 = Label(root, text='Кто вы по гороскопу?', font=24)
     lbl1.place(x=100, y=100)
@@ -131,8 +155,8 @@ def main():
     ent2 = Entry(root, width=30)
     ent2.place(x=80, y=130)
 
-    btn1 = Button(root, text="Показать гороскоп", command=gor1, width=30)
-    btn1.place(x = 60, y = 160)
+    btn2 = Button(root, text="Показать гороскоп", command=gor1, width=30)
+    btn2.place(x = 60, y = 160)
 
 
     root.mainloop()
