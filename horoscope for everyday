@@ -107,7 +107,7 @@ def main():
             vodolei()
         if znak == 'Рыбы' or znak == 'рыбы':
             fish()
-        else:
+        if znak == "":
             ans = mb.showerror(
                 title='Ошибочка вышла ;)',
                 message='Вы неправильно ввели данные ;)'
